@@ -19,6 +19,8 @@ Note: The website to scrap can be chosen, so far the script supported 2 website,
 
 To scrap the website, mention it when running the script.
 
-eg: python main.py -s "hartamas"
+```
+python main.py -s "hartamas"
+```
 
 The script runs propertyguru by default.
