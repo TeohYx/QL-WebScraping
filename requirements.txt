@@ -1,0 +1,6 @@
+configparser
+argparse
+openpyxl
+numpy
+cloudscraper
+bs4
