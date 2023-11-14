@@ -1,0 +1,384 @@
+FamilyMart Wisma Lim Foo Yong
+FamilyMart Mid Valley
+FamilyMart Gateway@KLIA Terminal 2 Arrivals (2)
+FamilyMart SS15
+FamilyMart Changkat Bukit Bintang
+FamilyMart Taylors Lakeside
+FamilyMart Amcorp Mall
+FamilyMart Menara Citibank
+FamilyMart NU Sentral
+FamilyMart MyTown
+FamilyMart Damansara Uptown
+FamilyMart Sunway Velocity
+FamilyMart Sunway Medical Centre (G)
+FamilyMart SS 2
+FamilyMart Intermark
+FamilyMart Gunung Lang
+FamilyMart Summit USJ
+FamilyMart Bandar Sunway
+FamilyMart Subang Jaya Medical Centre
+FamilyMart Gateway@KLIA Terminal 2 Arrivals (2)
+FamilyMart Awana Skyway Station
+FamilyMart Menara Hap Seng
+FamilyMart Paradigm Mall
+FamilyMart Desa Setapak
+FamilyMart Bangsar South
+FamilyMart Southkey
+FamilyMart Bukit Tinggi 1
+FamilyMart Damansara Uptown 3
+FamilyMart Petaling Jaya Seksyen 14
+FamilyMart Sunway Giza
+FamilyMart Danau Niaga
+FamilyMart Bandar Puteri Puchong
+FamilyMart Ikano Power Centre
+FamilyMart Sri Petaling
+FamilyMart Taipan USJ
+FamilyMart KSL Avenue
+FamilyMart Damansara Jaya
+FamilyMart Kajang
+FamilyMart Sri Hartamas
+FamilyMart Setia Alam (Prima)
+FamilyMart Kepong
+FamilyMart Taman Maluri
+FamilyMart Kota Kemuning
+FamilyMart C180 Balakong
+FamilyMart Toppen
+FamilyMart Bandar Baru Uda
+FamilyMart Sungai Long
+FamilyMart D Pulze
+FamilyMart Eng Ann
+FamilyMart Jalan Sultan Ismail (2)
+FamilyMart Sunway Putra
+FamilyMart Sunway Pyramid
+FamilyMart Oasis Ara Damansara
+FamilyMart Gombak
+FamilyMart Shah Alam Seksyen 7
+FamilyMart Sri Permaisuri
+FamilyMart IOI City Mall
+FamilyMart The Mines
+FamilyMart Desa Aman Puri
+FamilyMart Kuchai Lama
+FamilyMart Shah Alam Seksyen 18
+FamilyMart Bandar Menjalara
+FamilyMart Fraser Business Park
+FamilyMart Midpoint Shopping Complex
+FamilyMart SACC Mall
+FamilyMart Glenmarie
+FamilyMart Mid Valley
+FamilyMart Kompleks Mutiara
+FamilyMart Mahkota Cheras
+FamilyMart Menara U
+FamilyMart Plaza Damas
+FamilyMart Kapar
+FamilyMart Kelana Jaya Dataran Glomac
+FamilyMart JB City Square
+FamilyMart Sungai Buloh Caltex
+FamilyMart Nusa Bestari
+FamilyMart Bandar Puchong Jaya
+FamilyMart Caltex LDP Batu 14
+FamilyMart Taman Selayang Utama
+FamilyMart Taman Sutera
+FamilyMart Sunway Monash Residence
+FamilyMart Bukit Jalil Jaya
+FamilyMart Caltex Lestari Perdana
+FamilyMart Plaza Sentosa
+FamilyMart Ampang Point
+FamilyMart Bukit Tinggi 2
+FamilyMart Mega Mendung
+FamilyMart PLUS Sg Buloh
+FamilyMart Berkeley Uptown
+FamilyMart i-City Mall
+FamilyMart Lake Fields
+FamilyMart Lebuh Turi
+FamilyMart Taman Johor Jaya
+FamilyMart Seksyen 9
+FamilyMart Metropoint Kajang
+FamilyMart Jonker Street
+FamilyMart Mutiara Mas
+FamilyMart Caltex Taman Daya
+FamilyMart Caltex Mukim Tebrau
+FamilyMart Taman Molek
+FamilyMart KSL City
+FamilyMart MesaMall
+FamilyMart Bukit Dahlia
+FamilyMart Indahpura
+FamilyMart LRT Ampang Park
+FamilyMart LRT Masjid Jamek
+FamilyMart Sky Avenue
+FamilyMart TTDI
+FamilyMart Rasah Prima
+FamilyMart Seremban Gateway
+FamilyMart Taman University
+FamilyMart Taman Mount Austin
+FamilyMart Taman Danau Desa
+FamilyMart NU Empire Subang
+FamilyMart Ampang Jaya
+FamilyMart Gelang Patah
+FamilyMart Caltex Kuala Selangor
+FamilyMart Ayer Keroh
+FamilyMart Centrepoint Seremban
+FamilyMart Caltex Bestari Jaya
+FamilyMart Gravity Green
+FamilyMart Porto Historia
+FamilyMart Banting
+FamilyMart Setia City Mall
+FamilyMart Bandar Sri Damansara
+FamilyMart Setia Tropika
+FamilyMart Sentosa Klang
+FamilyMart Pantai KL Hospital
+FamilyMart Caltex Taman Puteri Wangsa
+FamilyMart Waterfront @ Desa Park City
+FamilyMart Caltex Hutan Melintang
+FamilyMart Bangi Seksyen 9
+FamilyMart KLSMC
+FamilyMart Melaka Raya
+FamilyMart Desa Cemerlang
+FamilyMart Plaza Sentral
+FamilyMart Sunway Velocity
+FamilyMart Gleneagles KL
+FamilyMart Caltex Bandar Puteri Klang
+FamilyMart Permas
+FamilyMart Eco Botanic
+FamilyMart Rawang
+FamilyMart Nadi Putrajaya
+FamilyMart Menara Ikhlas, Putrajaya
+FamilyMart Menara UOA Bangsar
+FamilyMart Caltex Jalan Skudai
+FamilyMart Caltex Lebuh Spa
+FamilyMart Mahkota Parade
+FamilyMart Petron Setia Impian
+Family Mart Ecohill Taipan
+FamilyMart Alamanda Shopping Centre
+FamilyMart Lagenda Melaka
+FamilyMart Senai Centrepoint
+FamilyMart Sunway Medical Centre (G)
+FamilyMart Olive Hill Business Park
+FamilyMart Prima Avenue, Cyberjaya
+FamilyMart Suria KLCC
+FamilyMart Taman Adda
+FamilyMart Taman Gaya
+FamilyMart Kebun Teh
+FamilyMart Denai Alam
+FamilyMart Taman Ungku Tun Aminah
+FamilyMart Caltex Jalan Besar (Seri Kembangan)
+FamilyMart Desa Pandan
+FamilyMart Damansara Heights
+FamilyMart Bukit Beruang
+FamilyMart Batu Berendam
+FamilyMart Bukit Baru
+FamilyMart Puncak Bertam
+FamilyMart Melaka Sentral
+FamilyMart Sunggala Gateway
+FamilyMart Kuala Pilah
+FamilyMart Gateway@KLIA Terminal 2 Arrivals (2)
+FamilyMart One Maxim, Sentul
+FamilyMart Seksyen 15, Bangi
+FamillyMart Malim Jaya
+FamilyMart Galleria @ Kotaraya
+FamilyMart Caltex Setia Alam
+FamilyMart Wisma UOA 2
+FamilyMart Caltex Taman Impian Emas
+FamilyMart R&R Skudai
+FamilyMart Petron Kota Masai
+FamilyMart Taman Setia Indah
+FamilyMart Paradigm JB
+FamilyMart Jalan Serampang
+FamilyMart Caltex Taman Banting Baru
+FamilyMart Old Street, Batu Pahat
+FamilyMart Teluk Pulai
+FamilyMart Bandar Seri Putra
+FamilyMart Petron Rasah Kemayan
+FamilyMart Port Dickson
+FamilyMart Caltex Raja Uda
+FamilyMart Jenjarom
+FamilyMart Kota Emas
+FamilyMart Gravitas
+FamilyMart Bercham
+FamilyMart Parit Raja
+FamilyMart Auto City
+FamilyMart Karpal Singh Drive
+FamilyMart Pusat Perniagaan Haji Manan, Kluang
+FamilyMart Pekan Sentral, Pekan Nanas
+FamilyMart Kota Tinggi
+FamilyMart Jalan Burma
+FamilyMart Caltex Setiawangsa
+FamilyMart Jalan Pesta
+FamilyMart Petron Hulu Langat
+FamilyMart Caltex Taman Perling
+FamilyMart Caltex Sg. Dua
+FamilyMart Bandar Damai Perdana
+FamilyMart Icon City
+FamilyMart Farlim
+FamilyMart Tanjung Karang
+FamilyMart Caltex Jalan Kapar
+FamilyMart Jalan Kebun
+FamilyMart Bandar Saujana Putra
+FamilyMart Vista Valley, Semenyih
+FamilyMart Bahau
+FamilyMart Yong Peng
+FamilyMart D' Garden, Batu Pahat
+FamilyMart Sg Besar
+FamilyMart Sekinchan
+FamilyMart Sri Utama, Segamat
+FamilyMart Bukit Sentosa, Rawang
+FamilyMart Chulia Street
+FamilyMart Gemas
+FamilyMart Solaria Square
+FamilyMart Jalan Perak
+FamilyMart Jasin
+FamilyMart Mont Kiara
+FamilyMart Gurney Paragon (Kedai Serbaneka Family Mart Kulim)
+FamilyMart Petron Taman Cahaya Masai
+FamilyMart Tampin
+FamilyMart Caltex Segamat Baru
+FamilyMart Masjid Tanah
+FamilyMart Taman Segar
+FamilyMart USM Sg Dua
+FamilyMart Jade Hills
+FamilyMart Caltex Jalan Song Ban Kheng
+FamilyMart Dataran Puchong
+FamilyMart C-Mart Nibong Tebal
+FamilyMart Caltex Setia Sentral
+FamilyMart Caltex Salak South
+FamilyMart Cameron Centrum (Kedai Serbaneka Family Mart)
+FamilyMart Bukit Bakri
+FamilyMart Teluk Intan
+FamilyMart Tangkak
+FamilyMart Greentown, Ipoh
+FamilyMart Manhattan Business Centre, Station 18
+FamilyMart Bidor
+FamilyMart Sg Udang
+FamilyMart Silibin
+FamilyMart Caltex Sunway Iskandar
+FamilyMart Petron Tanjung Labuh
+FamilyMart Prima Saujana, Kajang
+FamilyMart CU Pavilion Bukit Jalil
+FamilyMart Botanica CT Centre, Balik Pulau
+FamilyMart Merlimau
+FamilyMart Bentong
+FamilyMart Tanjung Malim
+FamilyMart Caltex E-gate
+FamilyMart Petron Taman Prima
+FamilyMart Golden Triangle 2
+FamilyMart Caltex Batang Kali
+FamilyMart Bond Square
+FamilyMart Caltex Taman Meru
+FamilyMart SOHO
+FamilyMart Klebang
+FamilyMart Kuala Kangsar
+FamilyMart Senawang
+FamilyMart Taiping Sentral Mall
+FamilyMart Tanah Rata (Kedai Serbaneka Family Mart Kulim)
+FamilyMart Kg Jelatang, Alor Gajah
+FamilyMart Caltex Bandar Saujana Utama
+FamilyMart Drive-thru Caltex Puncak Alam
+Lot No, FamilyMart Caltex Temiang, Persiaran Sri Pulai 2, Seremban, Negeri Sembilan
+FamilyMart Gunung Rapat
+FamilyMart Bayan Indah
+FamilyMart Serai Wangi Mall
+FamilyMart Caltex Tambun
+FamilyMart Caltex Persiaran Mokhtar Dahari
+FamilyMart Gambir Square
+FamilyMart Seremban Uptown 2
+FamilyMart Eco Majestic
+FamilyMart Kota Warisan
+FamilyMart Bandar Enstek
+FamilyMart Iconic Point
+FamilyMart KL Traders Square
+FamilyMart Desaru
+FamilyMart Larkin Town Centre
+FamilyMart Tanjung Bungah
+FamilyMart Caltex Batu Maung
+FamilyMart Kulim
+FamilyMart Sungai Siput
+FamilyMart Raub
+FamilyMart Parit Buntar
+FamilyMart The Core
+FamilyMart TTDI Grove
+FamilyMart Caltex Ulu Yam
+FamilyMart Caltex S2 Heights
+FamilyMart Caltex Dengkil Bypass
+FamilyMart Seri Botani
+FamilyMart Batu Gajah
+FamilyMart Eco Borealis
+FamilyMart Bandar Tasik Puteri
+FamilyMart Seri Iskandar
+FamilyMart Subang Bestari
+FamilyMart Bentong Prima
+FamilyMart melati utama
+FamilyMart Kuala Lipis
+FamilyMart Taman Yayasan
+FamilyMart Simpang Renggam
+FamilyMart Mantin
+FamilyMart Southville
+FamilyMart Caltex Teluk Air Tawar
+FamilyMart Bandar Baru Kampar
+FamilyMart Sikamat
+FamilyMart Caltex Jalan Pudu
+FamilyMart Bandar Baru Sungai Buloh
+FamilyMart Pusat Perniagaan Putra Raub
+FamilyMart Klebang Restu
+FamilyMart Tapah
+FamilyMart Ferringhi Walk
+FamilyMart Temu Shop Elmina
+FamilyMart Pinggiran Batu Caves
+FamilyMart Putra Heights
+FamilyMart Dagang Avenue
+FamilyMart Pusat Bandar Putra Nilai
+FamilyMart Hillpark Residence
+FamilyMart Bukit Rambai
+FamilyMart Kelapa Sawit Taman Impiana Jalan Impiana 1 Kelapa Sawit Kulai Johor
+FamilyMart Alma
+FamilyMart Bandar Kinrara
+FamilyMart Petron Medan Sejahtera
+FamilyMart Desa Petaling
+FamilyMart Taman Sejati
+FamilyMart Bangi Seksyen 7
+FamilyMart Puchong Permai
+FamilyMart Mentakab
+FamilyMart Wangsa Melawati
+FamilyMart Saujana Utama
+FamilyMart Maju Utama
+FamilyMart Pengerang
+FamilyMart Kotasas
+FamilyMart Taman Lumut Indah 2 Bukit Permata Lumut Perak
+FamilyMart Durian Tunggal
+FamilyMart Taman Mas Jaya
+FamilyMart Caltex Tanjung Tokong
+FamilyMart Caltex Jalan Kuala Ketil
+FamilyMart Alor Setar
+FamilyMart Ayer Tawar
+FamilyMart Pantai Remis
+FamilyMart Caltex Tandop
+FamilyMart Kuala Sg Baru
+FamilyMart Lobak
+FamilyMart Temerloh
+FamilyMart IOI City Mall 2
+FamilyMart Taman Samudra
+FamilyMart Caltex Selama
+FamilyMart Simpang Kuala
+FamilyMart Jalan Beserah
+FamilyMart Rengit
+FamilyMart Ampang Business Centre
+FamilyMart Sitiawan
+FamilyMart Dataran Selayang
+FamilyMart Taman Tasik Indah Kluang
+FamilyMart Caltex Lagenda Heights
+FamilyMart Jerantut
+FamilyMart Lukut
+FamilyMart Paroi
+FamilyMart S2-3-L11 Departure Level Public Concourse (Landside) KLIA2 64000 Sepang Selangor
+FamilyMart Caltex AMJ Paya Rumput
+FamilyMart Caltex Mayang Permai
+FamilyMart Caltex Krubong
+FamilyMart Jerai Plaza
+FamilyMart Taman Sri Serdang
+FamilyMart IM8
+FamilyMart Riverfront Kuantan
+FamilyMart Bandar Country Homes
+FamilyMart Petron Genting Permai
+FamilyMart Rembau
+FamilyMart Caltex Kuantan Bypass
+FamilyMart Sendayan
+FamilyMart Radia
+FamilyMart Subang SS15
