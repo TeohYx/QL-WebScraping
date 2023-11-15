@@ -45,7 +45,7 @@ class RentalURLs:
         except:
             raise ValueError("Please pass with 2 arguments.")
 
-        place = df.family_mart_address[index]
+        place = df.locations[index]
         
         temp_place = place.replace((config['Constant']['family_mart_checker'] + " "), "")
         place = 'freetext=' + temp_place.strip().replace(' ', '%20') + '&'

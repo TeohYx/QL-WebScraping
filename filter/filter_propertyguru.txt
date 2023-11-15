@@ -1,0 +1,10 @@
+LOCATION FILE
+sheets/Store_test.csv
+
+LISTING
+rent
+
+PROPERTY
+SHOP
+SHOPO
+RTLSP

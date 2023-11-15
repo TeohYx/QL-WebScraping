@@ -2,8 +2,8 @@ import openpyxl
 import os
 
 class Workbook:
-    def __init__(self, workflows=None):
-        self._headers = None
+    def __init__(self, headers, workflows=None):
+        self._headers = headers
         self._workflows = workflows
 
     @property
@@ -50,7 +50,7 @@ class Workbook:
 
         return workbook, sheet
 
-    def open_current_sheet(self, workbook_name, worksheet_new_name, index):
+    def open_current_sheet_propertyguru(self, workbook_name, worksheet_new_name, index):
         # Open or load a workbook if existed
         if os.path.exists(workbook_name):
             workbook = openpyxl.load_workbook(workbook_name)
@@ -58,7 +58,7 @@ class Workbook:
             workbook = openpyxl.Workbook()
 
         sheet = workbook.active
-        self.headers = ('Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement')
+        # self.headers = ('Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement')
         for i, header in enumerate(self.headers, 1):
             sheet.cell(row=1, column=i, value=str(header).capitalize())
         sheet.append([(index+1)])
@@ -74,7 +74,7 @@ class Workbook:
             workbook = openpyxl.Workbook()
 
         sheet = workbook.active
-        self.headers = ("Name", "Address", "Size", "Storey", "Psf", "Reference")
+        # self.headers = ("Name", "Address", "Size", "Storey", "Psf", "Reference")
         for i, header in enumerate(self.headers, 1):
             sheet.cell(row=1, column=i, value=str(header).capitalize())
 
@@ -83,7 +83,7 @@ class Workbook:
     """
     openpyxl
     """
-    def store_data(self, workbook_name, index, data):
+    def store_data_propertyguru(self, workbook_name, index, data):
         listing = len(data.name)
 
         print(f"workflow is {self.workflows[index]}\n")
@@ -91,7 +91,7 @@ class Workbook:
         # print("Whole is: " + worksheet_new_name)
 
         # workbook, sheet = self.create_multiple_sheets(workbook_name, worksheet_new_name)
-        workbook, sheet = self.open_current_sheet(workbook_name, worksheet_new_name, index)
+        workbook, sheet = self.open_current_sheet_propertyguru(workbook_name, worksheet_new_name, index)
 
         # Add data
         data.get_all()
