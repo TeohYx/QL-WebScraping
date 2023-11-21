@@ -3,7 +3,7 @@ This codes are able to scrap data from website, mainly for property site using B
 
 On top on scraping, it also can filter out data in respect of the displacement between the scraped listing's address and the given list's address.
 
-The tool used to extract the longitude/latitude is www.geoapify.com.
+The tool used to extract the longitude/latitude is *www.geoapify.com*.
 
 1. Install the package from the requirements.txt
 
@@ -36,28 +36,28 @@ python main.py -s "propertyguru" -a "yes"
 ```
 Alternatively, the analysis can be run separately from the main script.
 ```
-python analysis.py -f "output_file.xlsx"
+python analysis.py -f output_file.xlsx
 ```
 Note that the file should be in .xlsx extension.
 
 The script runs propertyguru by default.
 
-** For changing the setting such as the destination file, etc. can refer to the config.ini file
+** For changing the setting such as the destination file, etc. can refer to the **config.ini** file
 
 
 ------------------------------------------------------------------------------------------------
 
 To scrape a new website, the following steps should be followed:
 
-1. Add filter_{site}.txt in filter/ directory.
+1. Add **filter_{site}.txt** in filter/ directory.
 
 In the txt file, include the locations in which the nearby rental information is wishes to find out, and the filters dedicated to the website accordingly (e.g. LOCATION FILE, LISTING, PROPERTY)<br>
 
-2. Update config.ini 
+2. Update **config.ini** 
 
 Things to update: filter_file_{site}, output_file_{site}, base_url_{site}<br>
 
-3. Update content.py
+3. Update **content.py**
 
 Add new method to connect the new website url and make sure it can get the HTML content from the website.<br>
 If the website is static, BeautifulSoup alone is needed.<br>
@@ -68,13 +68,13 @@ However most website are dynamic nowadats, therefore Selenium is requried as it 
 a. Specify the location of Database<br>
 b. Specify the location of RentalURL<br>
 c. Initialize Workbook instance (add header) - For convienience purposes, as the website scraped usually have 3 main data - Price, Size, psf, therefore it is recommend to assign them in 4th, 5th and 6th position. (1, 2, 3, 4, 5, 6,...). To change the position, the position should be also change in the 'analysis.py' file.<br>
-d. Initialize WebScraping instance - Provide base url, site name, database, workbook, rentalurl, whether to perform analysis, and filter file__
-e. Add web_scraping_{site} and iterate_page_{site} methods in main. Modify related object into the current website. Some important thing to modify are the tag for identifying last page, and tag to get the next page link.<br>
+d. Initialize WebScraping instance - Provide base url, site name, database, workbook, rentalurl, whether to perform analysis, and filter file<br>
+e. Add ***web_scraping_{site}*** and ***iterate_page_{site}*** methods in main. Modify related object into the current website. Some important thing to modify are the tag for identifying last page, and tag to get the next page link.<br>
 
 5. Modify created rental_url_{site}.py
 
 Every website have different query parameters, therefore a new rental_url.py need to be created to handle each of the website.<br>
-In the new rental_url_{site}.py, modify the url by changing the query parameter accordingly so that the output url is workable.<br>
+In the new **rental_url_{site}.py**, modify the url by changing the query parameter accordingly so that the output url is workable.<br>
 
 6. Modify created database_{site}.py
 
