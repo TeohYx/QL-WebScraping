@@ -1,0 +1,10 @@
+LOCATION FILE
+sheets/FM_remain.csv
+
+LISTING
+rent
+
+PROPERTY SEPARATED
+retail-space
+shop-office
+shop

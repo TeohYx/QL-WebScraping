@@ -1,4 +1,4 @@
-import web_scraping_scripts.location as location
+from web_scraping_scripts.location import Location
 
 class Database:
     def __init__(self):
@@ -128,7 +128,7 @@ class Database:
                 print(f"AttributeError: {e} for address")    
                 address = None        
 
-            distance = location.distance_calculator(fm_coordinate, address) 
+            distance = Location.distance_calculator(fm_coordinate, address) 
 
             if distance > max_displacement:
                 print(f"Distance is larger than {max_displacement} and will not be included")

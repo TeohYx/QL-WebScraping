@@ -17,7 +17,6 @@ FamilyMart Gunung Lang
 FamilyMart Summit USJ
 FamilyMart Bandar Sunway
 FamilyMart Subang Jaya Medical Centre
-Gateway@KLIA Terminal 2 Arrivals (2) ?)
 FamilyMart Awana Skyway Station
 FamilyMart Menara Hap Seng
 FamilyMart Paradigm Mall
@@ -64,7 +63,6 @@ FamilyMart Fraser Business Park
 FamilyMart Midpoint Shopping Complex
 FamilyMart SACC Mall
 FamilyMart Glenmarie
-Mid Valley ?)
 FamilyMart Kompleks Mutiara
 FamilyMart Mahkota Cheras
 FamilyMart Menara U
@@ -134,7 +132,6 @@ FamilyMart KLSMC
 FamilyMart Melaka Raya
 FamilyMart Desa Cemerlang
 FamilyMart Plaza Sentral
- Sunway Velocity ?)
 FamilyMart Gleneagles KL
 FamilyMart Caltex Bandar Puteri Klang
 FamilyMart Permas
@@ -147,11 +144,9 @@ FamilyMart Caltex Jalan Skudai
 FamilyMart Caltex Lebuh Spa
 FamilyMart Mahkota Parade
 FamilyMart Petron Setia Impian
-Ecohill Taipan ?)
 FamilyMart Alamanda Shopping Centre
 FamilyMart Lagenda Melaka
 FamilyMart Senai Centrepoint
-Sunway Medical centre (G) ?)
 FamilyMart Olive Hill Business Park
 FamilyMart Prima Avenue, Cyberjaya
 FamilyMart Suria KLCC
@@ -170,15 +165,12 @@ FamilyMart Puncak Bertam
 FamilyMart Melaka Sentral
 FamilyMart Sunggala Gateway
 FamilyMart Kuala Pilah
-Gateway@KLIA Terminal 2 Arrivals (2) ?)
 FamilyMart One Maxim, Sentul
 FamilyMart Seksyen 15, Bangi
-Malim Jaya ?)
 FamilyMart Galleria @ Kotaraya
 FamilyMart Caltex Setia Alam
 FamilyMart Wisma UOA 2
 FamilyMart Caltex Taman Impian Emas
-FamilyMart R&R Skudai
 FamilyMart Petron Kota Masai
 FamilyMart Taman Setia Indah
 FamilyMart Paradigm JB

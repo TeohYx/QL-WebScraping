@@ -17,12 +17,13 @@ class DataFilter:
         self._locations = None              # A list of locations extracted from the location_file
         self.location = []                      # A list of location get from filter text
         self._commercial_type = []
+        self.commercial_type_sep = []
         self._listing_type = []
         self._family_mart_coordinates = None
         self._location_amount = None
 
     def get_all(self):
-        print(f"location file: {self.location_file}\nlocations: {self.locations}\nlocation: {self.location}\nproperty: {self.commercial_type}\nlisting: {self.listing_type}\nAmount: {self._location_amount}\n")
+        print(f"location file: {self.location_file}\nlocations: {self.locations}\nlocation: {self.location}\nproperty: {self.commercial_type}\nproperty (separated): {self.commercial_type_sep}\nlisting: {self.listing_type}\nAmount: {self._location_amount}\n")
 
     @property
     def locations(self, index=None):
@@ -117,19 +118,25 @@ class DataFilter:
                         line = file.readline()
 
                         self.commercial_type.append(line.strip())
+                elif line.strip() == "PROPERTY SEPARATED":
+                    while line.strip() !='':
+                        line = file.readline()
+
+                        self.commercial_type_sep.append(line.strip())
                 line = file.readline()
 
 
         self.location_file = self.location_file
         self.location = self.location[:-1]
         self.commercial_type = self.commercial_type[:-1]
+        self.commercial_type_sep = self.commercial_type_sep[:-1]
         self.listing_type = self.listing_type[:-1]
 
         if self.location:
             self.location_amount = len(self.location)
 
 
-        print(f"{self.location_file}\n{self.commercial_type}\n{self.listing_type}")
+        print(f"Location: {self.location_file}\nProperty type: {self.commercial_type}\nProperty (separated): {self.commercial_type_sep}\nListing type: {self.listing_type}")
 
                      
 

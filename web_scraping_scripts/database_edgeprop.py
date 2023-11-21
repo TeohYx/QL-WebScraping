@@ -1,15 +1,22 @@
 from web_scraping_scripts.location import Location
 
+# Selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 class Database:
     def __init__(self):
         self._name = []
         self._address = []
         self._description = []
         self._size = []
-        self._storey = []
+        self._price = []
         self._psf = []
         self._displacement = []
         self._reference = []
+        self.num_of_listings = 0
         self._number_of_listing = None
 
     @property
@@ -45,12 +52,12 @@ class Database:
         self._size.append(size)
     
     @property
-    def storey(self):
-        return self._storey
+    def price(self):
+        return self._price
     
-    @storey.setter
-    def storey(self, price):
-        self._storey.append(price)
+    @price.setter
+    def price(self, price):
+        self._price.append(price)
 
     @property
     def psf(self):
@@ -90,88 +97,94 @@ class Database:
             print("\n")
             print(f"Name is {self.name[i]}")
             print(f"Address is {self.address[i]}")
-            # print(f"Description is {self.description[i]}")
+            print(f"Description is {self.description[i]}")
             print(f"Size is {self.size[i]}")
-            print(f"Storey is {self.storey[i]}")
+            print(f"Price is {self.price[i]}")
             print(f"Psf is {self.psf[i]}")
+            print(f"Displacement is {self.displacement[i]}")
             print(f"Reference is {self.reference[i]}")
 
         print(f"Number of listing for this location so far is {len(self.name)}")
 
-
-    # def remove_data(self, index):
-    #     print("before: ", len(self.name))
-    #     self.name.pop(index)
-    #     self.address.pop(index)
-    #     self.description.pop(index)
-    #     self.size.pop(index)
-    #     self.price.pop(index)
-    #     self.psf.pop(index)
-    #     self.displacement.pop(index)
-    #     self.reference.pop(index)
-    #     print("after: ", len(self.name))
-
     def get_current(self):
         # print(f"Start printing {len(self.name)}")
-        print(f"Name is {self.name[-1]}, Address is {self.address[-1]}, Description is {self.description[-1]}, Size is {self.size[-1]}, Price is {self.storey[-1]}, Psf is {self.psf[-1]}, Displacement is {self.displacement[-1]}, Reference is {self.reference[-1]}")
+        print(f"Name is {self.name[-1]}, Address is {self.address[-1]}, Description is {self.description[-1]}, Size is {self.size[-1]}, Price is {self.price[-1]}, Psf is {self.psf[-1]}, Displacement is {self.displacement[-1]}, Reference is {self.reference[-1]}")
 
         print(f"Number of listing for this location so far is {len(self.name)}")
 
     # Scraping data from given url into class variables 
-    def extract_data(self, web_content, fm_coordinate=None):
-        print("this")
-        listing = web_content.find_all('article', class_='rh_prop_card rh_prop_card--listing')
+    def extract_data(self, web_content, max_displacement, base_url, fm_coordinate=None):
+        num_of_listings = 0
+        print("Start storing")
+
+        listing = web_content.find_all('div', class_='css-1tjb2q6')
         # print(listing)
-        wrapattributes = web_content.find_all('span', class_= 'figure')
-        # print("THIS IS \n", listing)
-        # print(location.distance_calculator("Jalan Ampang, KL City, Kuala Lumpur", "Lot G-01, Ground Floor, Wisma Lim Foo Yong, 86, Jalan Raja Chulan, 50200 Kuala Lumpur"))
-        # print("THIS IS ", roomSizes)
-        # Break out of function if no listings found
         if not listing:
             print("There are no listings available")
             return True     
-# b = [i for i in a if (i%2)-1 == 0]
-        print(len(wrapattributes))
-        # attribute_wraps = wrapattributes.find('div', class_='rh_prop_card__meta_wrap')
-        # wrapattribute = [first for first in wrapattributes if (first%2)-1 == 0]
-        # print(wrapattribute)
-        attributes = [wrapattributes[i].text for i in range(len(wrapattributes))]
-        attribute = [attributes[i:i+2] for i in range(0, len(attributes), 2)]
-        # print(attribute)
 
         for index, list in enumerate(listing):
-            print("here")
+            # print(list)
             try:
-                self.address = list.find('div', class_='rh_prop_card__details').h3.text[1:-1]  
-                print(self.address)
+                address = list.find('div', class_ ='listing-address').text    
+                num_of_listings += 1
             except AttributeError as e:
                 print(f"AttributeError: {e} for address")    
-                self.address = None        
+                address = None        
+
+            distance = Location.distance_calculator(fm_coordinate, address) 
+
+            if distance > max_displacement:
+                print(f"Distance is larger than {max_displacement} and will not be included")
+                continue
+
+            
+            self.address = address
+            print(self.address)
+            try:
+                self.displacement = distance
+                print(self.displacement)
+            except AttributeError as e:
+                print(f"AttributeError: {e} for displacement")
+                self.displacement = None
 
             try:
-                self.name = list.find('div', class_='rh_prop_card__details').h3.text[1:-1]
+                self.name = list.find('h3', class_='listing-name').text
                 print(self.name)
             except AttributeError as e:
                 print(f"AttributeError: {e} for name")
                 self.name = None
 
             try:
-                self.storey = attribute[index][0]
-                print(self.storey)
+                self.price = list.find('div', class_= 'listing-price').div.span.text.replace(",", "").strip()
+                print(self.price)
             except AttributeError as e:
                 print(f"AttributeError: {e} for price")
-                self.storey = None
-                
+                self.price = None
+
             try:
-                self.reference = list.find('div', class_="rh_prop_card__details").h3.a['href']
+                property_type = web_content.find('div', 'dd-toggle-output').text
+                # print(property_type)
+                property_type2 = list.find('span', class_='listing-address-style').text
+                # print(property_type2)
+                self.description = property_type + " / " + property_type2
+                print(self.description)
+            except AttributeError as e:
+                print(f"AttributeError: {e} for description")    
+                self.description = None                        
+
+            try:
+                reference = list.find("a", class_='text-decoration-none')['href']
+                self.reference = base_url[:-1] + reference
                 print(self.reference)
             except AttributeError as e:
                 print(f"AttributeError: {e} for reference")  
                 self.reference = None    
 
             try:
-                self.size = attribute[index][1].replace("\n", "").replace("\t", "")
-                print(self.size)
+                self.size = list.find('div', class_='listing-address-style').span.text.split()[0].replace(",", "")
+                # self.size = list.find('div', class_='listing-address-style')
+                print(f"size is {self.size}")
             except AttributeError as e:
                 print(f"AttributeError: {e} for size")     
                 self.size = None
@@ -179,14 +192,17 @@ class Database:
                 print(f"IndexError: {e} for size")
                 self.size = None
 
-            try:
-                self.psf = list.find('p', class_='rh_prop_card__price').text.replace("RM", "").strip()
-                print(self.psf)
+            try:      
+                self.psf = list.find('span', class_='psf').text.split()[1]
+                print(f"psf is {self.psf}")
             except AttributeError as e:
                 print(f"AttributeError: {e} for psf")     
                 self.psf = None
             except IndexError as e:
                 print(f"IndexError: {e} for psf")
                 self.psf = None
+        
+        self.num_of_listings = num_of_listings
+        # print(self.name())
         return
     

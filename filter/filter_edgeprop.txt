@@ -4,7 +4,6 @@ sheets/FMStore.csv
 LISTING
 rent
 
-PROPERTY
-SHOP
-SHOPO
-RTLSP
+PROPERTY SEPARATED
+shop
+shop-house

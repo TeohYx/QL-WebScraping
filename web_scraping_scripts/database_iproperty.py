@@ -1,15 +1,29 @@
-import web_scraping_scripts.location as location
+from web_scraping_scripts.location import Location
+
+# Selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 
 class Database:
     def __init__(self):
         self._name = []
+        # [[[a, b, c], [a, b, c], [a, b, c]],
+        # [[a, b, c], [a, b, c], [a, b, c]],
+        # [[a, b, c], [a, b, c], [a, b, c]]]
         self._address = []
         self._description = []
         self._size = []
-        self._storey = []
+        self._price = []
         self._psf = []
         self._displacement = []
         self._reference = []
+        # [[1, 2, 3],
+        # [1, 2, 3],
+        # [1, 2, 3]]
+        self.num_of_listings = 0
         self._number_of_listing = None
 
     @property
@@ -45,12 +59,12 @@ class Database:
         self._size.append(size)
     
     @property
-    def storey(self):
-        return self._storey
+    def price(self):
+        return self._price
     
-    @storey.setter
-    def storey(self, price):
-        self._storey.append(price)
+    @price.setter
+    def price(self, price):
+        self._price.append(price)
 
     @property
     def psf(self):
@@ -90,103 +104,164 @@ class Database:
             print("\n")
             print(f"Name is {self.name[i]}")
             print(f"Address is {self.address[i]}")
-            # print(f"Description is {self.description[i]}")
+            print(f"Description is {self.description[i]}")
             print(f"Size is {self.size[i]}")
-            print(f"Storey is {self.storey[i]}")
+            print(f"Price is {self.price[i]}")
             print(f"Psf is {self.psf[i]}")
+            print(f"Displacement is {self.displacement[i]}")
             print(f"Reference is {self.reference[i]}")
 
         print(f"Number of listing for this location so far is {len(self.name)}")
 
-
-    # def remove_data(self, index):
-    #     print("before: ", len(self.name))
-    #     self.name.pop(index)
-    #     self.address.pop(index)
-    #     self.description.pop(index)
-    #     self.size.pop(index)
-    #     self.price.pop(index)
-    #     self.psf.pop(index)
-    #     self.displacement.pop(index)
-    #     self.reference.pop(index)
-    #     print("after: ", len(self.name))
-
     def get_current(self):
         # print(f"Start printing {len(self.name)}")
-        print(f"Name is {self.name[-1]}, Address is {self.address[-1]}, Description is {self.description[-1]}, Size is {self.size[-1]}, Price is {self.storey[-1]}, Psf is {self.psf[-1]}, Displacement is {self.displacement[-1]}, Reference is {self.reference[-1]}")
+        print(f"Name is {self.name[-1]}, Address is {self.address[-1]}, Description is {self.description[-1]}, Size is {self.size[-1]}, Price is {self.price[-1]}, Psf is {self.psf[-1]}, Displacement is {self.displacement[-1]}, Reference is {self.reference[-1]}")
 
         print(f"Number of listing for this location so far is {len(self.name)}")
 
     # Scraping data from given url into class variables 
-    def extract_data(self, web_content, fm_coordinate=None):
-        print("this")
-        listing = web_content.find_all('article', class_='rh_prop_card rh_prop_card--listing')
+    def extract_data(self, web_content, max_displacement, base_url, fm_coordinate=None):
+        # num_of_listings = 0
+        print("Start storing")
+
+        listing = web_content.find_all('li', class_='ListingsListstyle__ListingListItemWrapper-hjHtwj')
+        self.num_of_listings += len(listing)
         # print(listing)
-        wrapattributes = web_content.find_all('span', class_= 'figure')
-        # print("THIS IS \n", listing)
-        # print(location.distance_calculator("Jalan Ampang, KL City, Kuala Lumpur", "Lot G-01, Ground Floor, Wisma Lim Foo Yong, 86, Jalan Raja Chulan, 50200 Kuala Lumpur"))
-        # print("THIS IS ", roomSizes)
-        # Break out of function if no listings found
         if not listing:
             print("There are no listings available")
             return True     
-# b = [i for i in a if (i%2)-1 == 0]
-        print(len(wrapattributes))
-        # attribute_wraps = wrapattributes.find('div', class_='rh_prop_card__meta_wrap')
-        # wrapattribute = [first for first in wrapattributes if (first%2)-1 == 0]
-        # print(wrapattribute)
-        attributes = [wrapattributes[i].text for i in range(len(wrapattributes))]
-        attribute = [attributes[i:i+2] for i in range(0, len(attributes), 2)]
-        # print(attribute)
 
         for index, list in enumerate(listing):
-            print("here")
+            # print(list)
+            # ADDRESS
             try:
-                self.address = list.find('div', class_='rh_prop_card__details').h3.text[1:-1]  
-                print(self.address)
+                address1 = list.find('div', class_="FeaturedCardstyle__AddressWrapper-hTnZXH").text
+                # print(address1)
             except AttributeError as e:
-                print(f"AttributeError: {e} for address")    
-                self.address = None        
+                # print(f"AttributeError: {e} for address")    
+                address1 = None    
 
             try:
-                self.name = list.find('div', class_='rh_prop_card__details').h3.text[1:-1]
-                print(self.name)
+                address2 = list.find('div', class_="BasicCardstyle__AddressWrapper-jUpzVZ").text
+                # print(address2)
             except AttributeError as e:
-                print(f"AttributeError: {e} for name")
+                # print(f"AttributeError: {e} for address")    
+                address2 = None    
+
+            if address1 is None and address2 is None:
+                print("Address not found")
+                # Return used because if the address is NOne then the whole information is not required as the displacement will not be known
+                return
+
+            if address1 is not None:
+                address = address1
+                print(address)
+            else:              
+                address = address2
+                print(address)
+
+            # num_of_listings += 1                
+
+            # DISPLACEMENT
+            distance = Location.distance_calculator(fm_coordinate, address) 
+
+            if distance > max_displacement:
+                print(f"Distance is larger than {max_displacement} and will not be included")
+                continue
+
+            self.address = address
+            print(self.address)
+            try:
+                self.displacement = distance
+                print(self.displacement)
+            except AttributeError as e:
+                print(f"AttributeError: {e} for displacement")
+                self.displacement = None
+
+            # NAME
+            try:
+                name1 = list.find('h2', class_="FeaturedCardstyle__TitleWrapper-cTxkFN").text
+            except AttributeError as e:
+                # print(f"AttributeError: {e} for name")
+                name1 = None
+
+            try:
+                name2 = list.find('h2', class_="BasicCardstyle__TitleWrapper-eNIiIX").text
+                
+            except AttributeError as e:
+                # print(f"AttributeError: {e} for name")
+                name2 = None
+
+            if name1 is None and name2 is None:
+                print("Name not found")
                 self.name = None
+            
+            if name1 is not None:
+                self.name = name1
+                print(self.name)
+            else:
+                self.name = name2
+                print(self.name)
 
+            # PRICE
             try:
-                self.storey = attribute[index][0]
-                print(self.storey)
+                self.price = list.find('li', class_= 'ListingPricestyle__ItemWrapper-etxdML').text.replace(",", "").split()[1]
+                print(self.price)
             except AttributeError as e:
                 print(f"AttributeError: {e} for price")
-                self.storey = None
-                
+                self.price = None
+
+            # PROPERTY TYPE
             try:
-                self.reference = list.find('div', class_="rh_prop_card__details").h3.a['href']
-                print(self.reference)
+                property_type = web_content.find('p', 'ListingAttributesstyle__ListingAttrsDescriptionItemWrapper-cCDpp').text
+
+                self.description = property_type.split('\xa0')[0].strip()
+                print(self.description)
+            except AttributeError as e:
+                print(f"AttributeError: {e} for description")    
+                self.description = None                        
+
+            # REFERENCE
+            try:
+                reference = list.find_all("a", class_='depth-listing-card-link')
+                # print(reference[0]['href'])
+
+                self.reference = reference[0]['href']
+                print(f"reference is {self.reference}")
             except AttributeError as e:
                 print(f"AttributeError: {e} for reference")  
                 self.reference = None    
 
-            try:
-                self.size = attribute[index][1].replace("\n", "").replace("\t", "")
-                print(self.size)
-            except AttributeError as e:
-                print(f"AttributeError: {e} for size")     
-                self.size = None
-            except IndexError as e:
-                print(f"IndexError: {e} for size")
-                self.size = None
-
-            try:
-                self.psf = list.find('p', class_='rh_prop_card__price').text.replace("RM", "").strip()
-                print(self.psf)
+            # PSF
+            try:      
+                self.psf = list.find('div', class_='ListingPricestyle__PricePSFWrapper-eraPyG fWQDeN listing-price-psf').text.split()[1]
+                print(f"psf is {self.psf}")
             except AttributeError as e:
                 print(f"AttributeError: {e} for psf")     
                 self.psf = None
             except IndexError as e:
                 print(f"IndexError: {e} for psf")
                 self.psf = None
+
+            # PRICE
+            if self.price[-1] and self.psf[-1] is not None:
+                self.size = float(self.price[-1])/float(self.psf[-1])
+                print(f"Size is {self.size}")
+            else:
+                self.size = None
+            # try:
+            #     self.size = list.find('div', class_='listing-address-style').span.text.split()[0].replace(",", "")
+            #     # self.size = list.find('div', class_='listing-address-style')
+            #     print(f"size is {self.size}")
+            # except AttributeError as e:
+            #     print(f"AttributeError: {e} for size")     
+            #     self.size = None
+            # except IndexError as e:
+            #     print(f"IndexError: {e} for size")
+            #     self.size = None
+
+        
+
+        # print(self.name())
         return
     

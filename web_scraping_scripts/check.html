@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+	<title>Bot Protection</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style type="text/css">
+		body {
+			background: #fff;
+			font-family: MuseoSans, Helvetica Neue, Helvetica, Arial, PingFang HK, STHeitiTC-Light, Meiryo, Microsoft JhengHei, sans-serif;
+			font-size: 14px;
+			margin: 0;
+			padding: 0;
+			position: relative
+		}
+
+		#recaptcha_widget>div {
+			margin: auto
+		}
+
+		.header {
+			background: #2f8dcd
+		}
+
+		.logo,
+		.logo svg {
+			display: block
+		}
+
+		.logo svg {
+			fill: #fff;
+			height: 56px;
+			margin: auto;
+			width: 158px
+		}
+
+		.error {
+			margin: 5% auto 0;
+			max-width: 660px;
+			padding: 0 50px 50px
+		}
+
+		.error img {
+			margin: 20px
+		}
+
+		.error a {
+			color: #2d6387;
+			text-decoration: none
+		}
+
+		.detailed-text,
+		.txtC {
+			text-align: center
+		}
+
+		.detailed-text {
+			display: inline-block
+		}
+
+		.detailed-text h4 {
+			color: #666;
+			font-size: 18px;
+			font-weight: 300;
+			margin: 0 0 5px
+		}
+
+		.detailed-text .helpful-links {
+			margin: 30px 0
+		}
+
+		.detailed-text p em {
+			color: #666;
+			font-size: 13px;
+			font-weight: 300
+		}
+
+		.detailed-text ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 280px
+		}
+
+		.detailed-text ul>li {
+			display: inline-block;
+			margin-bottom: 5px;
+			width: 125px
+		}
+
+		.detailed-text ul>li:nth-child(2n+2) {
+			margin-left: 20px
+		}
+	</style>
+	<meta http-equiv="refresh" content="375">
+</head>
+
+<body class="errorPage">
+	<div class="header">
+		<a class="logo" href="https://www.iproperty.com.my/"><i>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 356 35" xml:space="preserve">
+        <path d="M13.9-0.1C6.2-0.1,0.1,5.3,0.1,11.8c0,0.2,0,0.4,0,0.5l0,0c0.5,9.8,13.8,22.6,13.8,22.6S27,22.1,27.7,12.3l0,0
+          c0-0.2,0-0.4,0-0.5C27.7,5.3,21.4-0.1,13.9-0.1z M23.3,15.1c-0.7,0.9-1.8,0.9-2.6,0.4L20,14.9l-0.9,6.3c0,0.4-0.2,0.7-0.4,0.9
+          c-0.2,0.2-0.4,0.4-0.7,0.4H16c-0.9,0-0.9-0.7-0.9-0.9l0,0l0,0l0.2-3c0-0.4-0.2-0.7-0.5-0.7h-2.3c-0.4,0-0.5,0.4-0.5,0.7l0.2,3
+          c0,0,0,0.9-0.9,0.9H9.2c-0.2,0-0.5-0.2-0.7-0.4c-0.2-0.2-0.4-0.5-0.4-0.9l-0.9-6.3l-0.7,0.5l0,0c-0.4,0.2-0.7,0.4-1.1,0.4
+          c-0.5,0-1.1-0.2-1.4-0.7c-0.7-0.9-0.5-1.9,0.4-2.6l8.1-6.3c0.7-0.5,1.6-0.5,2.3,0l8.1,6.3C23.9,13.2,24,14.4,23.3,15.1z"></path>
+        <g>
+          <path d="M37.7,4.3c0-1.8,1.4-3.1,3.2-3.1S44,2.5,44,4.3s-1.4,3.1-3.1,3.1S37.7,6,37.7,4.3z"></path>
+          <rect x="37.9" y="9.3" width="6" height="19.1"></rect>
+          <path d="M48.2,1.1h11.2c6.5,0,10.5,3.9,10.5,9.4l0,0c0,6.3-4.9,9.6-11,9.6h-4.6v8.2h-6V1.1H48.2z M58.9,14.9
+            c3,0,4.7-1.8,4.7-4.2l0,0c0-2.6-1.9-4.2-4.9-4.2H54v8.4C54,14.9,58.9,14.9,58.9,14.9z"></path>
+          <path d="M71.6,7.6h6v4.2c1.2-2.8,3.2-4.7,6.7-4.6v6.1h-0.3c-4,0-6.3,2.4-6.3,7.3v7.7h-6C71.6,28.4,71.6,7.6,71.6,7.6z"></path>
+          <path d="M84.4,18.1L84.4,18.1c0-6.1,4.9-11,11.4-11c6.5,0,11.2,4.7,11.2,10.9l0,0c0,5.9-4.9,10.9-11.4,10.9
+            C89.1,28.9,84.4,24.2,84.4,18.1z M101.2,18.1L101.2,18.1c0-3.1-2.3-5.8-5.4-5.8c-3.3,0-5.4,2.6-5.4,5.8l0,0c0,3.1,2.3,5.8,5.4,5.8
+            C99.1,23.9,101.2,21.2,101.2,18.1z"></path>
+          <path d="M109.4,7.6h6v3c1.4-1.9,3.5-3.3,6.5-3.3c4.9,0,9.4,3.9,9.4,10.9l0,0c0,7-4.5,10.9-9.4,10.9
+            c-3.2,0-5.1-1.4-6.5-3.1v8.9h-6V7.6z M125.4,18.1L125.4,18.1c0-3.5-2.3-5.8-5.1-5.8s-5.1,2.3-5.1,5.8l0,0c0,3.5,2.3,5.8,5.1,5.8
+            C123.1,23.9,125.4,21.6,125.4,18.1z"></path>
+          <path d="M132.7,18.1L132.7,18.1c0-6.1,4.2-11,10.3-11c7,0,10.2,5.4,10.2,11.4c0,0.5,0,1.1,0,1.6h-14.5
+            c0.5,2.6,2.5,4,5.1,4c1.9,0,3.5-0.7,5.1-2.1l3.3,3c-1.9,2.5-4.7,3.9-8.6,3.9C137.4,28.9,132.7,24.6,132.7,18.1z M147.4,16.3
+            c-0.3-2.6-1.9-4.4-4.4-4.4c-2.4,0-4,1.8-4.5,4.4H147.4z"></path>
+          <path d="M155.6,7.6h5.9v4.2c1.2-2.8,3.2-4.7,6.7-4.6v6.1h-0.2c-4,0-6.3,2.4-6.3,7.3v7.7h-6L155.6,7.6L155.6,7.6z"></path>
+          <path d="M173,22.5v-10h-2.4V7.4h2.4V2h5.9v5.4h4.9v5.1h-4.9v8.9c0,1.4,0.5,2.1,1.9,2.1c1.1,0,2.1-0.4,3-0.7v4.7
+            c-1.2,0.7-2.6,1.2-4.7,1.2C175.4,28.8,173,27.4,173,22.5z"></path>
+          <path d="M185.9,33.3l1.9-4.4c0.7,0.5,1.8,0.9,2.4,0.9c1.1,0,1.6-0.4,2.1-1.4l-8.2-21h6.3l4.7,14.2l4.6-14.2h6.1
+            l-8.1,21.4c-1.6,4.2-3.3,5.8-6.8,5.8C189.1,34.9,187.5,34.2,185.9,33.3z"></path>
+          <path d="M335.9,33.3l1.9-4.4c0.7,0.5,1.8,0.9,2.4,0.9c1.1,0,1.6-0.4,2.1-1.4l-8.2-21h6.3l4.7,14.2l4.5-14.2h6.1
+            l-8,21.4c-1.6,4.2-3.3,5.8-6.8,5.8C339,34.9,337.5,34.2,335.9,33.3z"></path>
+          <path d="M204.1,25.3c0-1.8,1.4-3.1,3.1-3.1s3.2,1.4,3.2,3.1s-1.4,3.1-3.2,3.1C205.7,28.4,204.1,27,204.1,25.3z"></path>
+          <path d="M291.1,25.3c0-1.8,1.4-3.1,3.2-3.1s3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1S291.1,27,291.1,25.3z"></path>
+          <path d="M211.8,18.1L211.8,18.1c0-6.1,4.6-11,11-11c4,0,6.5,1.4,8.4,3.5l-3.7,3.9c-1.4-1.4-2.6-2.3-4.7-2.3
+            c-3,0-5.1,2.6-5.1,5.8l0,0c0,3.1,2.1,5.8,5.2,5.8c1.9,0,3.3-0.9,4.7-2.3l3.5,3.5c-2.1,2.3-4.4,3.9-8.6,3.9
+            C216.4,28.9,211.8,24,211.8,18.1z"></path>
+          <path d="M231.6,18.1L231.6,18.1c0-6.1,4.9-11,11.4-11s11.2,4.7,11.2,10.9l0,0c0,5.9-4.9,10.9-11.4,10.9
+            C236.3,28.9,231.6,24.2,231.6,18.1z M248.4,18.1L248.4,18.1c0-3.1-2.3-5.8-5.4-5.8c-3.3,0-5.4,2.6-5.4,5.8l0,0
+            c0,3.1,2.3,5.8,5.4,5.8C246.3,23.9,248.4,21.2,248.4,18.1z"></path>
+          <path d="M256.6,7.6h5.9v3c1.4-1.8,3.1-3.3,6.1-3.3c2.8,0,4.7,1.2,5.9,3.3c1.8-2.1,4-3.3,6.8-3.3c4.4,0,7,2.6,7,7.7
+            v13.7h-6V16.9c0-2.8-1.2-4.2-3.5-4.2c-2.3,0-3.7,1.4-3.7,4.2v11.7h-5.8V16.9c0-2.8-1.2-4.2-3.5-4.2s-3.7,1.4-3.7,4.2v11.7h-5.9v-21
+            C256.4,7.6,256.6,7.6,256.6,7.6z"></path>
+          <path d="M300.4,7.6h5.9v3c1.4-1.8,3.1-3.3,6.1-3.3c2.8,0,4.7,1.2,5.9,3.3c1.8-2.1,4-3.3,6.8-3.3c4.4,0,7,2.6,7,7.7
+            v13.7h-6V16.9c0-2.8-1.2-4.2-3.5-4.2c-2.3,0-3.7,1.4-3.7,4.2v11.7h-5.8V16.9c0-2.8-1.2-4.2-3.5-4.2s-3.7,1.4-3.7,4.2v11.7h-5.9v-21
+            C300.2,7.6,300.4,7.6,300.4,7.6z"></path>
+        </g>
+        </svg>
+        </i></a>
+	</div>
+	<div class="error txtC">
+		<div class="detailed-text-wrapper">
+			<div class="detailed-text">
+				<h1>Hi! We just want to make sure you are a human</h1>
+				<h4>
+					Please enter the captcha below and we will get you on your way.
+				</h4>
+				<h4>
+					<br /><br />
+					<p>
+						<form id="challenge-form" class="challenge-form">
+							<div id="cf-please-wait">
+								<div id="spinner">
+									<div id="cf-bubbles">
+										<div class="bubbles"></div>
+										<div class="bubbles"></div>
+										<div class="bubbles"></div>
+									</div>
+								</div>
+								<p id="cf-spinner-please-wait">Checking your browser before accessing
+									"www.iproperty.com.my".</p>
+								<p id="cf-spinner-redirecting" style="display:none">Redirecting...</p>
+							</div><noscript id="cf-captcha-bookmark" class="cf-captcha-info">
+								<h1 style="color:#bd2426;">Please turn JavaScript on and reload the page.</h1>
+							</noscript>
+							<div id="no-cookie-warning" class="cookie-warning" style="display:none">
+								<p style="color:#bd2426;">Please enable Cookies and reload the page.</p>
+							</div>
+						</form>
+						<script>
+							(function(){window._cf_chl_opt={cvId: '2',cZone: "www.iproperty.com.my",cType: 'managed',cNounce: '30233',cRay: '826c2329bd7e13cc',cHash: '700d2e1417278fa',cUPMDTk: "\/rent\/shop\/?__cf_chl_tk=mMQ3.wnp5IiW8b.Ue4FEJmFzBSLioEV60_PTJ7gLkxQ-1700099995-0-gaNycGzNCjs",cFPWv: 'g',cTTimeMs: '1000',cMTimeMs: '375000',cTplV: 1,cTplB: 'cf',cK: "visitor-time",fa: "\/rent\/shop\/?__cf_chl_f_tk=mMQ3.wnp5IiW8b.Ue4FEJmFzBSLioEV60_PTJ7gLkxQ-1700099995-0-gaNycGzNCjs",md: "vY0Hvs..i_iimnXsUt7Gg6jEEKqjYw0mbciypsSxnio-1700099995-0-AVG0w6IGTrPg3yBU9DvZBOG8Dgp8SFBOdTqf9VG7Ym7psja_xswPbisVHmfsDO__MIG2GB-T6k4RwQeM0R-st_RvabPzi9IE_u8ihGJKJgduECw-Au5WhKua23ysW-7dA0FsXpDJqUvWX489WdlA-YN5zpjCD4MoJdo3xoD1mEkLXM8wrjNLFjuvjkHSLxV6Sv0xXb2BqO2VMsuY3uoPIkLpN-LdTLRRjTLexWnmWI5XvzWyX359NyYJQiYTOsjYJM4Ln7f_7UAxuU1KAQNhCcourNFeIODFS5PTbDjQH3ZSJkpdaZeTYsrowVoNyY-n4LBVqQEhS2Q0Ju-8jjCNclJ7-BUOYoycoz3pXAaZbMpb_Kqzs2R1HrB1xdNpDUn5eQnq4fIY8vU5yH5zFfChx6WE-dgA2eg_IzMgge81x6SYxIY7xhquSNjJXni4YC7jGwHoai4icTdC5fESSQG_48db7-BdE1j2ehRA9jwXwmgKlSQD2rP-HYsYtmsfemv9oU4s5v4j_BSOeYDG3TgfJZ4sLv5f4D7F9wZbl0nWEn8QgTJKPAMvpx5zQ7GVkH0xXINIzcavZMisEkauVqTl6BcsFOPn6jG49skYkG60utYmCyopd8bDyiidjuSX3fUgNuumbJSZA1Grbg6XRPtPAg2QMwGRkkHB3SfG883NX6P2SAOvJYka0DezeA6HnlElD3eyzJ5rHmGojDHQZHhtKYOSd2-GdOSF0R_D22fQWz6X2MoCFOcj3LeJaEjZJtisTeQJ7lzQhrWqiIb3nZlbnUar8yzEmXY0fGqOmF8bqjfGqbH7Hx5WD1zikJb5pgENXxG9YVdx1wcMcyLSAM4kbHrT_Qepf15URzyI-94WlQ4SOSo8aP-xYoeCu24tPIoXizxmZB0CqQZFRhfwsaxpQJaplgRKj3aGZP7XXTbsdqgUWIky9O7XXjiVLpAEDsTuZyCVW-fXuBx6wuokdjeXvHZN-Ir1Mn36LjWj_hk36zVCP2mdCultjDFryAEeyuS1xGB-PE_iCwtmnKlcK3M8LGqysIXElAnOVkA9QiCqTlMeAs27ZIFdxNH6jFdStURLthEqhyC4nbgVVk6fN3pZlUMuFVmi86Q2tvIpZoBPx-xm9gD1HVTXXOViOHk0RB9FP8hcXd2PqIAIeVd8KFPjiWcvjDXij4iLUuXZtldTIodKLTYTxjv02P-qtzecZ1pNAb5BYMDJ4P6A2onvoeGSvzNsAmOQXFvS5pCR3ckH766Ifqdg5cla5oQqo-ivVWNgdiI7Y4k23rFLt-yOX_aaOFOXhR2JjeKXjW89c_nY2wCt1m7Y7s4miK0sj0_YYtiTNevN-M22mk5RArDGHQMj7NrZAejnnRwlhg9o4Gsh_EMs0zBdAtZHeZdRSpYIDeFGYTwhPnwe9YzmNaWzkiKr3e6AGdOlwzl7JjMLqmitR9hIkR43CM9c6-UplwROfiFFUIR620Ysf5AqmyJfJpQhlGqaoVc2W1DoXk7yuIDLNcKkye4WDfHb7jJhIuLowxbqPMA_MndXnDicY60-ZsJ7364RXbfXiUo8eiEejpvaFRzZfLNcO9TfB1FDgPB5js1VYsEMpu8NPtlDiuaUHhO_uLV6x8ti0DjB4rCEwBm6Uhxee6NjGnr04yCd24XX9Dj0zenmPSSh_0lw5nHGmzsbWMXxjrfPk1xb6iTDBiuNNT_Hge38ioKwcX5fkBv86s7XENszeKsYpakda9dxYvxPfPppgnfV4m_-M7Nw6h8w5B94goWu2psOD9yc1YsDCOxwhJZ3yVFO-rWW3GzIF8gvMGZYATBLRdUkTcpmefSMNdFWIpTPQg7xF_elP3-h2KchHNnGGbOONv3gvI1SQV3LnF79U_ZF1ds8T2BGHSlJNFaOmNLLU9ftjyJWQrQhU6_6UpNO91LsHveKahKjio80dxE8FJR_qlmL4j1riK0omkoCJ4E4Q_TGroXr_13vD9atdlZ_WQzffFY5iwHwgA7_GqOpp-U-0Ge8QOOL7TdN1uuCPwG4P1hxCTZBEyzA_2-m7ikJE9LCxBj0wG8DHFnxJRTs3p6i95l2E9SHQGSk9TLk-YqmYaibey7hAArd-7hTXpJ-OZGAWLS0qS3kTbsex2Tv-NiBoLUD-zbyBOLMHpbOHq0PFQsGyNKwI-xsf6xlD7jwvOANQHS5LVo3oNvK_JQp10YlB8YboTuEbRryUHcVFcTHEEhNuAPey7e03NrDAQmUhcwVwoRWrAO8q_g2L3Hrcsm32xECG1LSX97wC0em0iAV0bm049j6ud7sml-CgL7wttolxQAV-WPpBYeerDO_wRIGqfD0RcW90LjXXT-ZWHk2TSYdoH-20H5mkZt_RsxESSJTW9DD1KEvBVKDNoZIsTdEOzicdEQ0LiFSMfhNLchP_vz8r62lNuBO--WuDe-M7c6fiJDy_5bsoEp8obMPWmUKLRxD0p_mEJH7tfnu9WUebla1FCEmJ33Ct9ob7Vzva5mgVhtrJkZMJQjyIQOPFCBg4B6j8bVLhsSc--Z93vBR45vBkxpuh0qgqQOofA",cRq: {ru: 'aHR0cHM6Ly93d3cuaXByb3BlcnR5LmNvbS5teS9yZW50L3Nob3Av',ra: 'UG9zdG1hblJ1bnRpbWUvNy4zNS4w',rm: 'R0VU',d: 'ngL7USYxqsEE7LKT3Gt5rNRffYez1Xy6nakuPA+gQj/yyRi5FECzRaq4QAxEX/LilafYiioFBfRB49uHmrnsZvLXLR8QbTC27nxI2aflZ7Cbu0U8NL1caeHiKEkvT/NdlHDR3HrN3iEKHMG+TAP9Q8faWeKt/XaLIDqgCrBYGkRtp80kKcDI+oyo2/SlkPbLoTkAzS+5u9K1KxZb+L5UxVhdprAqsYIC/jaV54A4C27QUokwoC+82GCbl38aGyJm5xIBXQvSVPHVQawEPFxac5BCNL3WVO9rYomnJwtfel+Sgd3pl/tXhZzvNzkvoEqc+dQjMEX3Dsv+HMKQ7kLOqfQCOKa/mCJ+it59r6o0htju45drxln+WNyjrn4k5VHXyv79H/7hwx99j4v045gBO6GDAY3ltrgj9XgK1S7sdLl1pO1X1Lq9n2u++QlxFk2wtXFHR/+ehheJBZmkUONpoTMSptCRSws8rNvs6NemAig6Q0csn8lEOyQ/1dAR1cxOPeda0uhL7jM3PeyM5nj6ypz3pk8IoC5z1NFQnYUkvc92gDR3VTU+fkvrTTXxe28Y0/YOz3NIslI6QAPlNNMvhA==',t: 'MTcwMDA5OTk5NS4xNjYwMDA=',cT: Math.floor(Date.now() / 1000),m: 'jzgtJvKS1W80aJcuY/lgFFQlupgcRDhcJHDRtbcaC3o=',i1: 'LLKrrru2HM3XVmdl0URJ3w==',i2: '3Kzgv7gJk3i63w6YWZrXwg==',zh: 'NgBc69xWwsIIFvo/A8NQtCnRYGKgA2dJiJ4sIRX2EtY=',uh: 'eA+/gt73WBwH21hl9dxYBD1e5ZgFVaSvDVg3mqeUKtw=',hh: '+go25r+FII6y0szEV8ObJOlcy51LYegFDfO0zFtcHeE=',}};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=826c2329bd7e13cc';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/rent\/shop\/?__cf_chl_rt_tk=mMQ3.wnp5IiW8b.Ue4FEJmFzBSLioEV60_PTJ7gLkxQ-1700099995-0-gaNycGzNCjs" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());
+						</script>
+					</p>
+					<br /><br />
+					<p>
+						Cloudflare Ray ID: <strong>826c2329bd7e13cc</strong>• Your IP:<strong
+                >219.92.39.77</strong>
+					</p>
+				</h4>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
