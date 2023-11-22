@@ -25,7 +25,7 @@ Note: The website to scrap can be chosen, so far the script supported 3 website,
 To scrap the website, mention it when running the script.
 
 ```
-python main.py -s "hartamas"
+python main.py -s "edgeprop"
 ```
 
 To enable auto generation of statistic analysis, add the -a argument.
