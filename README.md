@@ -35,7 +35,7 @@ python main.py -s "propertyguru" -a "yes"
 ```
 Alternatively, the analysis can be run separately from the main script.
 ```
-python analysis.py -f output_file.xlsx
+python analysis.py -f {output_file}.xlsx
 ```
 Note that the file should be in .xlsx extension.
 
