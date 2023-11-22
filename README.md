@@ -17,11 +17,10 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Note: The website to scrap can be chosen, so far the script supported 2 website, which are - 
+Note: The website to scrap can be chosen, so far the script supported 3 website, which are - 
 1. PropertyGuru - "propertyguru"
 2. EdgeProp - "edgeprop"
 3. iProperty - "iproperty"
-4. Hartamas - "hartamas"
 
 To scrap the website, mention it when running the script.
 
