@@ -374,3 +374,4 @@ FamilyMart Caltex Kuantan Bypass
 FamilyMart Sendayan
 FamilyMart Radia
 FamilyMart Subang SS15
+FamilyMart R&R Skudai

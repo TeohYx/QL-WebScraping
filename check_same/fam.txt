@@ -147,7 +147,7 @@ FamilyMart Caltex Jalan Skudai
 FamilyMart Caltex Lebuh Spa
 FamilyMart Mahkota Parade
 FamilyMart Petron Setia Impian
-Family Mart Ecohill Taipan
+FamilyMart Ecohill Taipan
 FamilyMart Alamanda Shopping Centre
 FamilyMart Lagenda Melaka
 FamilyMart Senai Centrepoint
@@ -173,7 +173,7 @@ FamilyMart Kuala Pilah
 FamilyMart Gateway@KLIA Terminal 2 Arrivals (2)
 FamilyMart One Maxim, Sentul
 FamilyMart Seksyen 15, Bangi
-FamillyMart Malim Jaya
+FamilyMart Malim Jaya
 FamilyMart Galleria @ Kotaraya
 FamilyMart Caltex Setia Alam
 FamilyMart Wisma UOA 2
