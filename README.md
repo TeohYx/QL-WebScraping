@@ -83,3 +83,14 @@ Based on the web content, modify the tags accordingly and test it until they wor
 7. Add method for the site in workbook.py
 
 Lastly, the destination on place to store data need to modify as well, as the column of the shees would varies between website and perferences. <br>
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+All result can be calculated and a file can be generated through **content.py** 
+```
+python combine.py -l "output/Result_Edgeprop.xlsx" "output/Result_Iproperty.xlsx" "output/Result_Propertyguru.xlsx"
+```
+
+Where -l stores a list of file to be combine.
+
+The output is a .xlsx file with combined listings based on given location along with a summary 
