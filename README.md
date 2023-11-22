@@ -85,7 +85,7 @@ Lastly, the destination on place to store data need to modify as well, as the co
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-All result can be calculated and a file can be generated through **content.py** 
+All result can be calculated and a file can be generated through **combine.py** 
 ```
 python combine.py -l "output/Result_Edgeprop.xlsx" "output/Result_Iproperty.xlsx" "output/Result_Propertyguru.xlsx"
 ```
