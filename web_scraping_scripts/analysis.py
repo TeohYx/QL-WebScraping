@@ -18,26 +18,31 @@ def analyse_data(file):
     workbook = openpyxl.load_workbook(file)
     sheet = workbook.active
 
-    store_name_column = 0
-    price_column = 3
-    size_column = 4
-    psf_column = 5
+    store_id_column = 0
+    store_name_column = 1
+    link_column = 7
+    price_column = 4
+    size_column = 5
+    psf_column = 6
 
     store_name_values = []
+    link_values = []
     price_values = []
     size_values = []
     psf_values = []
 
     for row in sheet.iter_rows(min_row=2, values_only=True):
-        store_name_value = row[store_name_column]
+        store_name_value = (row[store_id_column], row[store_name_column])
         price_value = row[price_column]
         size_value = row[size_column]
         psf_value = row[psf_column]
+        link_value = row[link_column]
 
         store_name_values.append(store_name_value)
         price_values.append(price_value)
         size_values.append(size_value)
         psf_values.append(psf_value)
+        link_values.append(link_value)
 
     important_value_dict = {}
     data = {}
@@ -48,15 +53,22 @@ def analyse_data(file):
     record_data = 0
 
     store_name = None
+    print(store_name_values, price_values, size_values, psf_values)
     # important_value_dict = OrderedDict()
     for index, name in enumerate(store_name_values):
         # print(f"data here is {data}")
         # print(name)
-        if checker in str(name):     # run when the name contains FamilyMart
+        try:
+            after_price = link_values[index+1]
+        except:
+            after_price = None
+
+        if checker in str(name[1]) or (link_values[index] is None and after_price is not None) or (link_values[index] is not None and after_price is not None) or (link_values[index] is not None and after_price is None) :     # run when the name contains FamilyMart
+            # print(name)
             store_name = name
             # continue for the first time 
             if record_data >= 1:        # for more than first time, record data
-                important_value_dict["name"] = name
+                important_value_dict["name"] = (name[0], name[1])
                 value_temp.append((price_values[index], size_values[index], psf_values[index]))
                         
             record_data += 1
@@ -69,7 +81,7 @@ def analyse_data(file):
                 value_temp.clear()
                 record_data = 0
             record_data = 0 # means it finished loop the previous listings and ned to giv new one
-
+    # print(data)
     statistic = {}
  
     """
@@ -82,8 +94,8 @@ def analyse_data(file):
     """
     number_of_parameter = 16
     for key, value in data.items():
-        if key == "FamilyMart Mid Valley":
-            print(value)
+        # if key == "FamilyMart Mid Valley":
+        #     print(value)
         price = []
         size = []
         psf = []
@@ -96,8 +108,8 @@ def analyse_data(file):
         else:
             for index in range(len(value)):
                 p, s, ps = value[index]
-                if key == "FamilyMart Mid Valley":
-                    print(f"price is {p}, size is {s}, psf is {ps}")
+                # if key == "FamilyMart Mid Valley":
+                #     print(f"price is {p}, size is {s}, psf is {ps}")
 
                 if None in (p, s, ps):
                     continue
@@ -147,7 +159,7 @@ def analyse_data(file):
             price_mean = price_median = price_25percentile = price_75percentile = price_std = size_mean = size_median = size_25percentile = size_75percentile = size_std = psf_mean = psf_median = psf_25percentile = psf_75percentile = psf_std = amount = 0
             # print(f"{key} and {prices}")
                                
-    print(f"statistic is {statistic}")
+    # print(f"statistic is {statistic}")
 
     sheet = workbook.create_sheet(title="Summary")
 
@@ -155,16 +167,17 @@ def analyse_data(file):
     header = ('Mean', 'Median', '.25 Percentile', '.75 Percentile', 'Standard Deviation')
 
     for i in range(1, len(head)+1):
-        sheet.cell(row=1, column=i*5-3, value=str(head[i-1]))
+        sheet.cell(row=1, column=i*5-3+1, value=str(head[i-1]))
 
-    sheet.cell(row=2, column=1, value='FamilyMart Store')
+    sheet.cell(row=2, column=1, value='FamilyMart No')
+    sheet.cell(row=2, column=2, value='FamilyMart Store')
     for i in range(1, len(header)*3+1):
-        sheet.cell(row=2, column=i+1, value=str(header[(i-1)%5]))
-    sheet.cell(row=2, column=17, value='Number of Listing')
+        sheet.cell(row=2, column=i+1+1, value=str(header[(i-1)%5]))
+    sheet.cell(row=2, column=18, value='Number of Listing')
 
     for key, value in statistic.items():
         # print(value.size)
-        sheet.append([key, value[0], value[1], value[2], value[3], value[4], value[5], value[6], value[7], value[8], value[9], value[10], value[11], value[12], value[13], value[14], value[15]])
+        sheet.append([key[0], key[1], value[0], value[1], value[2], value[3], value[4], value[5], value[6], value[7], value[8], value[9], value[10], value[11], value[12], value[13], value[14], value[15]])
 
     workbook.save(file)
     workbook.close()

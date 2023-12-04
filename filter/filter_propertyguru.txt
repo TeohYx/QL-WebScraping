@@ -1,5 +1,5 @@
 LOCATION FILE
-sheets/FMStore.csv
+sheets/FM_remain_propertyguru.csv
 
 LISTING
 rent

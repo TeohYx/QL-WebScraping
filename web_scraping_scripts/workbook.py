@@ -2,7 +2,7 @@ import openpyxl
 import os
 
 class Workbook:
-    def __init__(self, headers, workflows=None):
+    def __init__(self, headers, workflows=None, ids = None):
         self._headers = headers
         self._workflows = workflows
 
@@ -80,7 +80,7 @@ class Workbook:
 
     #     return workbook, sheet
 
-    def open_current_sheet(self, workbook_name, worksheet_new_name=None, index=None):
+    def open_current_sheet(self, workbook_name, worksheet_new_name_id=None, index=None):
         # Open or load a workbook if existed
         if os.path.exists(workbook_name):
             workbook = openpyxl.load_workbook(workbook_name)
@@ -94,7 +94,7 @@ class Workbook:
 
         if index is not None:
             sheet.append([(index+1)])
-            sheet.append([worksheet_new_name])
+            sheet.append([worksheet_new_name_id[0], worksheet_new_name_id[1]])
 
         return workbook, sheet    
 
@@ -103,48 +103,61 @@ class Workbook:
     """
     def store_data_propertyguru(self, workbook_name, index, data):
         listing = len(data.name)
-        print(listing)
-        print(f"workflow is {self.workflows[index]}\n")
-        worksheet_new_name = self.workflows[index] 
+        # data = database.all
+        # print(data)
+        # if data[max_displacement] is None:
+        #     listing = data[max_displacement_larger]
+        # else:
+        #     listing = data[max_displacement]
+        # print(listing)
+        print(self.workflows)
+        print(f"workflow is {self.workflows[index][1]}\n")
         # print("Whole is: " + worksheet_new_name)
 
         # workbook, sheet = self.create_multiple_sheets(workbook_name, worksheet_new_name)
-        workbook, sheet = self.open_current_sheet(workbook_name, worksheet_new_name, index)
+        workbook, sheet = self.open_current_sheet(workbook_name, self.workflows[index], index)
 
         # Add data
-        data.get_all()
-
+        # data.get_all()
+        # num_of_lists = database.num_of_listings
+        # Format: (self.name, self.description, self.price, self.size, self.psf, self.reference, self.address, self.displacement)
+        # print(listing)
         for i in range(listing):
             try:
                 price = float(data.price[i])
+                # price = float(listing[i][2])
             except:
                 price = None
 
             try:
                 size = float(data.size[i])
+                # size = float(listing[i][3])
             except:
                 size = None
 
             try:
                 psf = float(data.psf[i])
+                # psf = float(listing[i][4])
             except:
                 psf = None
 
             try:
                 displacement = float(data.displacement[i])
+                # displacement = float(listing[i][7])
             except:
                 displacement = None
 
-            sheet.append([str(self.workflows[index]), str(data.name[i]), str(data.description[i]).strip("['']"), price
+            sheet.append([str(self.workflows[index][0]), str(self.workflows[index][1]), str(data.name[i]), str(data.description[i]).strip("['']"), price
             , size, psf, str(data.reference[i]), str(data.address[i]), displacement])
-
-        sheet.append(["Number of listing:", listing])
+            # sheet.append([str(self.workflows[index]), str(listing[i][0]), str(listing[i][1]).strip("['']"), price
+            # , size, psf, str(listing[i][5]), str(listing[i][6]), displacement])
+        sheet.append([f"Number of listing: {listing}", f"Number of all listings: {data.num_of_listings}", f"Connection Status: {data.connections}"])
         sheet.append([" "])
         # sheet.cell(row=sheet.max_row+1, column='A', value=str(ds.get_index()))
         workbook.save(workbook_name)
         # Close workbook
         workbook.close()
-        print(f"Successfully writed the listing for {self.workflows[index]}\n")
+        print(f"Successfully writed the listing for {self.workflows[index][1]}\n")
 
     def store_data_hartamas(self, workbook_name, data):
         listing = len(data.name)
@@ -203,12 +216,12 @@ class Workbook:
     def store_data_edgeprop(self, workbook_name, index, data):
         print("test", data)
 
-        print(f"workflow is {self.workflows[index]}\n")
-        worksheet_new_name = self.workflows[index] 
+        print(f"workflow is {self.workflows[index][1]}\n")
+        worksheet_new_name = self.workflows[index][1] 
         # print("Whole is: " + worksheet_new_name)
 
         # workbook, sheet = self.create_multiple_sheets(workbook_name, worksheet_new_name)
-        workbook, sheet = self.open_current_sheet(workbook_name, worksheet_new_name, index)
+        workbook, sheet = self.open_current_sheet(workbook_name, self.workflows[index], index)
 
         length = 0
         num_of_listings = 0
@@ -241,7 +254,7 @@ class Workbook:
                 except:
                     displacement = None
 
-                sheet.append([str(self.workflows[index]), str(data[ind].name[i]), str(data[ind].description[i]).strip("['']"), price
+                sheet.append([str(self.workflows[index][0]), str(self.workflows[index][1]), str(data[ind].name[i]), str(data[ind].description[i]).strip("['']"), price
                 , size, psf, str(data[ind].reference[i]), str(data[ind].address[i]), displacement])
 
         sheet.append([f"Number of listing: {length}", f"Number of all listings: {num_of_listings}"])
@@ -250,17 +263,17 @@ class Workbook:
         workbook.save(workbook_name)
         # Close workbook
         workbook.close()
-        print(f"Successfully writed the listing for {self.workflows[index]}\n")
+        print(f"Successfully writed the listing for {self.workflows[index][1]}\n")
 
     def store_data_iproperty(self, workbook_name, index, data):
         print("test", data)
 
-        print(f"workflow is {self.workflows[index]}\n")
-        worksheet_new_name = self.workflows[index] 
+        print(f"workflow is {self.workflows[index][1]}\n")
+        worksheet_new_name = self.workflows[index][1] 
         # print("Whole is: " + worksheet_new_name)
 
         # workbook, sheet = self.create_multiple_sheets(workbook_name, worksheet_new_name)
-        workbook, sheet = self.open_current_sheet(workbook_name, worksheet_new_name, index)
+        workbook, sheet = self.open_current_sheet(workbook_name, self.workflows[index], index)
 
         length = 0
         num_of_listings = 0
@@ -297,7 +310,7 @@ class Workbook:
                 except:
                     displacement = None
 
-                sheet.append([str(self.workflows[index]), str(data[ind].name[i]), str(data[ind].description[i]).strip("['']"), price
+                sheet.append([str(self.workflows[index][0]), str(self.workflows[index][1]), str(data[ind].name[i]), str(data[ind].description[i]).strip("['']"), price
                 , size, psf, str(data[ind].reference[i]), str(data[ind].address[i]), displacement])
 
         sheet.append([f"Number of listing: {length}", f"Number of all listings: {num_of_listings}"])
@@ -306,14 +319,16 @@ class Workbook:
         workbook.save(workbook_name)
         # Close workbook
         workbook.close()
-        print(f"Successfully writed the listing for {self.workflows[index]}\n")
+        print(f"Successfully writed the listing for {self.workflows[index][1]}\n")
 
     def store_fail(self, workbook, fails):
+        print("storing failed link")
         workbook, sheet = self.open_current_sheet(workbook)
-        sheet.append("Link that failed:")
+        sheet.append(["Link that failed:"])
         for fail in fails:
+            print(fail)
             sheet.append([fail])
-
+        print("Stored")
 
 
        

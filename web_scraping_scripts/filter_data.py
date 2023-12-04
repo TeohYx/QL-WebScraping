@@ -1,4 +1,9 @@
 import csv
+import re
+import configparser
+
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 class DataFilter:
     """
@@ -13,6 +18,7 @@ class DataFilter:
     """
     def __init__(self, filter_text):
         self.filter_text = filter_text
+        self.name_id = []
         self.location_file = None           # A files containing information of locations (eg: FMStore.csv)
         self._locations = None              # A list of locations extracted from the location_file
         self.location = []                      # A list of location get from filter text
@@ -69,29 +75,61 @@ class DataFilter:
     Get data from FMStore.csv
     Tis function get all the data of column 2nd (Store name)
     """
-    def extract_location(self):
+    def extract_location(self, option):
         location = []
         coordinate = []
+        name = []
+        id = []
         with open(self.location_file, 'r') as f:
             reader = csv.reader(f, delimiter=",")
             for row in reader:
-                location.append(row[1])
+                if option == 1:
+                    store = row[1]
+                    place_name = store.replace((config['Constant']['family_mart_checker'] + " "), "")
+
+                    location.append(place_name)
+                elif option == 2:   
+                    address = row[2]
+
+                    postcode_format = r'\b\d{5}\b'
+                    pattern = re.compile(postcode_format)
+                    # print(address)
+                    postcode = pattern.findall(address)
+                    # print(postcode)
+                    if not postcode:
+                        try:
+                            parts = address.split(',')
+                            address_search = parts[-3] + ',' + parts[-2]
+                        except:
+                            address_search = address
+                        finally:
+                            location.append(address_search)
+                    else:
+                        location.append(postcode[-1])
                 coordinate.append(row[6])
+                name.append(row[1])
+                id.append(row[0])
             
         # print(coordinate[1:])
         # addresses = location[1:].split(",")
         addresses = location[1:]
         coordinates = coordinate[1:]
+        name = name[1:]
+        id = id[1:]
 
+        for i in range(len(name)):
+            # [(id, name), (id, name)]
+            self.name_id.append((id[i], name[i]))
         self.locations = addresses
         self.family_mart_coordinates = coordinates
+        self.id = id
         self.location_amount = len(self._locations)
         if self._location_amount == 0:
             print(f"No filter is applied.")
         else:
             print(f"Filter applied for addresses: {self.family_mart_coordinates}")     
 
-    def extract_filter_text(self):
+    def extract_filter_text(self, option):
         with open(self.filter_text, "r") as file:
             line = file.readline()
 
@@ -100,13 +138,13 @@ class DataFilter:
                     while line.strip() !='':
                         line = file.readline()
 
-                        self.location.append(line.strip())
+                        self.name.append(line.strip())
                 if line.strip() == "LOCATION FILE":
                     while line.strip() !='':
                         line = file.readline()
 
                         self.location_file = line.strip()
-                        self.extract_location()
+                        self.extract_location(option)
                         break
                 elif line.strip() == "LISTING":
                     while line.strip() !='':
@@ -196,9 +234,9 @@ class DataFilter:
         else:
             print(f"Filter applied for listing type: {self._listing_type}")          
 
-    def extract_all(self):
+    def extract_all(self, option):
         # self.extract_commercial_type(site_name)
-        self.extract_filter_text()
+        self.extract_filter_text(option)
         # self.extract_listing_type(site_name)
 
 # def main():

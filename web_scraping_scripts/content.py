@@ -53,7 +53,9 @@ class WebContent:
         self._driver = driver
 
     # establish connection until it connects 
-    def connect(self, url, amount=RETRY_AMOUNT):
+    def connect(self, url, amount = None):
+        if not amount:
+            amount = WebContent.RETRY_AMOUNT
         self.is_retry_maximum = False
         scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
         # print(f"Scraper: {scraper} and url: {url}")
@@ -61,10 +63,12 @@ class WebContent:
 
         if info.status_code != 200:
             print(f"Error {info.status_code} reconnecting...")
+            # print("retry: ", WebContent.RETRY_AMOUNT)
             amount -= 1
             
             if amount == 0:
                 print("Number of retry reached maximum amount")
+                self.connection_fail.append(url)
                 self.is_retry_maximum = True
                 return
             else: 
@@ -112,6 +116,7 @@ class WebContent:
             # print("soup is ", soup)
         except Exception as e:
             print(f"An error occured: {e}")
+            self.connection_fail.append(url)
 
         # time.sleep(1)
         # self.web_content = driver.page_source

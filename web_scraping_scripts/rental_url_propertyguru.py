@@ -47,8 +47,7 @@ class RentalURLs:
 
         place = df.locations[index]
         
-        temp_place = place.replace((config['Constant']['family_mart_checker'] + " "), "")
-        place = 'freetext=' + temp_place.strip().replace(' ', '%20') + '&'
+        place = 'freetext=' + place.strip().replace(' ', '%20') + '&'
         self._place = place
         # print(self._place)
 

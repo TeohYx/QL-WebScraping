@@ -21,11 +21,13 @@ config.read("config.ini")
 class WebScraping:
     MAX_DISPLACEMENT = None
 
-    def __init__(self, base_url, site, db, wb, rent=None, analysis=None, market=None, filter_text=None):
+    def __init__(self, base_url, site, option, db, wb, rent=None, analysis=None, market=None, filter_text=None):
         self.market = market
         self.base_url = base_url        
         # Contain the url link corressponding to each of the family mart location in location.txt file
         self.site_name = site
+
+        self.option = option
 
         self.web_scraper = []
         self.database_content = []
@@ -59,9 +61,15 @@ def iterate_page_propertyguru(ws, index, database):
 
     # Scrape the current page information
     ws.check_no_listing = database.extract_data(soup, WebScraping.MAX_DISPLACEMENT, family_mart_coordinates)
-    database.get_all()
+    # database.get_all()
 
     print("Last page? ", check_last)
+
+    check_block = soup.find(class_='listing-list widget-fail')
+
+    if check_block:
+        print("Website blocked")
+        database.connections = "Blocked"
 
     # No listing found
     if ws.check_no_listing:
@@ -85,6 +93,7 @@ def iterate_page_propertyguru(ws, index, database):
 
     print("Maximum attempted reached? ", ws.cont.is_retry_maximum)
     if ws.cont.is_retry_maximum:
+        database.connections = "Failed"
         ws.check_is_finished = True
         return
     iterate_page_propertyguru(ws, index, database)
@@ -104,14 +113,6 @@ def web_scraping_propertyguru(ws):
     Output: A .xlsx file with complete list of every family mart information.
 
     """
-    print("Extracting the filter...\n")
-    ws.df.extract_all()
-    print("Extract done!\n")
-    print(ws.df.get_all())
-  
-    ws.workbook.workflows = ws.df.locations
-
-    print("Assigning rental url...\n")
     # Initialize and store the **rental_url** objects in web_scraper list
     for index in range(ws.df.location_amount):
         rent = ws.rental(ws.base_url, ws.market)
@@ -142,12 +143,15 @@ def web_scraping_propertyguru(ws):
         print("Maximum attempted reached? ", ws.cont.is_retry_maximum)
         if ws.cont.is_retry_maximum:
             print("Failed to connect at first attempt.\n")
+            database.connections = "Failed"
             ws.database_content.append(database) 
             print("Finished, writing to csv...\n")
             ws.workbook.store_data_propertyguru(config['File']['output_file_propertyguru'], index, ws.database_content[index])
             continue 
 
         iterate_page_propertyguru(ws, index, database)         # This scrape the information and get the next link for another loop
+        if database.connections is None: 
+            database.connections = "Success"
         ws.database_content.append(database)    # database_content now contains scraping information of every listing found from the link given.
 
         if ws.check_is_finished:
@@ -259,12 +263,6 @@ def web_scraping_edgeprop(ws):
     Output: A .xlsx file with complete list of every family mart information.
 
     """
-    print("Extracting the filter...\n")
-    ws.df.extract_all()
-    print("Extract done!\n")
-    ws.workbook.workflows = ws.df.locations
-
-    print("Assigning rental url...\n")
 
     """
     If the property type cannot be in same url at the same time, ned to provide separate link.
@@ -332,7 +330,7 @@ def web_scraping_edgeprop(ws):
 
 def iterate_page_iproperty(ws, index, database, url, page=1):
     soup = ws.cont.web_content
-
+    if not soup: return
     family_mart_coordinates = ws.df.family_mart_coordinates[index]
 
     check_last = False
@@ -385,12 +383,6 @@ def web_scraping_iproperty(ws):
     Output: A .xlsx file with complete list of every family mart information.
 
     """
-    print("Extracting the filter...\n")
-    ws.df.extract_all()
-    print("Extract done!\n")
-    ws.workbook.workflows = ws.df.locations
-
-    print("Assigning rental url...\n")
 
     """
     If the property type cannot be in same url at the same time, ned to provide separate link.
@@ -549,6 +541,15 @@ def web_scraping_hartamas(ws):
 
     # analyse_data(file)
 
+def set_up_filter_and_url(ws):
+    print("Extracting the filter...\n")
+    ws.df.extract_all(ws.option)
+    print("Extract done!\n")
+    print(ws.df.get_all())
+  
+    ws.workbook.workflows = ws.df.name_id
+
+    print("Assigning rental url...\n")
 
 def set_constant(config):
     """
@@ -566,6 +567,7 @@ def opt():
     parser.add_argument("-con", "--config", type=str, default="config.ini")
     parser.add_argument("-m", "--market", type=str, default="COMMERCIAL")
     parser.add_argument("-a", "--analysis", type=str, default="no")
+    parser.add_argument("-o", "--option", type=int, default=1, help="1-FamilyMart location, 2-Address postcode")
 
     return parser.parse_args()
 
@@ -581,27 +583,29 @@ def main(args):
     if args.site == "propertyguru":
         from web_scraping_scripts.database_propertyguru import Database
         from web_scraping_scripts.rental_url_propertyguru import RentalURLs
-        wb = Workbook(('Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement'))
-        ws = WebScraping(config['Link']['base_url_propertyguru'], args.site, Database, wb, RentalURLs, args.analysis, args.market, config['File']['filter_file_propertyguru'])
+        wb = Workbook(('Store No', 'Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement'))
+        ws = WebScraping(config['Link']['base_url_propertyguru'], args.site, args.option, Database, wb, RentalURLs, args.analysis, args.market, config['File']['filter_file_propertyguru'])
+        set_up_filter_and_url(ws)
         web_scraping_propertyguru(ws)
     elif args.site == "hartamas":
         from web_scraping_scripts.database_hartamas import Database
         wb = Workbook(("Name", "Address", "Size", "Storey", "Psf", "Reference"))
-        ws = WebScraping(config['Link']['base_url_hartamas'], args.site, Database, wb)
+        ws = WebScraping(config['Link']['base_url_hartamas'], args.site, args.option, Database, wb)
+        set_up_filter_and_url(ws)
         web_scraping_hartamas(ws)
     elif args.site == "edgeprop":
         from web_scraping_scripts.database_edgeprop import Database
         from web_scraping_scripts.rental_url_edgeprop import RentalURLs
-        wb = Workbook(('Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement'))
-        ws = WebScraping(config['Link']['base_url_edgeprop'], args.site, Database, wb, RentalURLs, args.analysis, None, config['File']['filter_file_edgeprop'])
-        # ws.cont.connect(ws.base_url)
+        wb = Workbook(('Store No', 'Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement'))
+        ws = WebScraping(config['Link']['base_url_edgeprop'], args.site, args.option, Database, wb, RentalURLs, args.analysis, None, config['File']['filter_file_edgeprop'])
+        set_up_filter_and_url(ws)
         web_scraping_edgeprop(ws)
     elif args.site == "iproperty":
         from web_scraping_scripts.database_iproperty import Database
         from web_scraping_scripts.rental_url_iproperty import RentalURLs
-        wb = Workbook(('Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement'))
-        ws = WebScraping(config['Link']['base_url_iproperty'], args.site, Database, wb, RentalURLs, args.analysis, None, config['File']['filter_file_iproperty'])
-        # ws.cont.connect(ws.base_url)
+        wb = Workbook(('Store No', 'Store Name', 'Name', 'Description', 'Price', 'Size', 'Psf', 'Reference', 'Address', 'Displacement'))
+        ws = WebScraping(config['Link']['base_url_iproperty'], args.site, args.option, Database, wb, RentalURLs, args.analysis, None, config['File']['filter_file_iproperty'])
+        set_up_filter_and_url(ws)
         web_scraping_iproperty(ws)      
     
     else:

@@ -85,11 +85,12 @@ Lastly, the destination on place to store data need to modify as well, as the co
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-All result can be calculated and a file can be generated through **combine.py** 
+All result can be calculated and a file can be generated through **combine_file.py** 
 ```
-python combine.py -l "output/Result_Edgeprop.xlsx" "output/Result_Iproperty.xlsx" "output/Result_Propertyguru.xlsx"
+python combine_file.py -l "output/Result_Edgeprop.xlsx" "output/Result_Iproperty.xlsx" "output/Result_Propertyguru.xlsx" -o "out.xlsx"
 ```
 
 Where -l stores a list of file to be combine.
+      -o specific an output file
 
 The output is a .xlsx file with combined listings based on given location along with a summary 
