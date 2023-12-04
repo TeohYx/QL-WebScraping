@@ -22,6 +22,12 @@ Note: The website to scrap can be chosen, so far the script supported 3 website,
 2. EdgeProp - "edgeprop"
 3. iProperty - "iproperty"
 
+As this scripts will scrape data based on the given location, therefore the location need to be specified. 
+
+```
+(Store No	Store Name	Address	formatted_address_google	location_lat	location_lng	Coordinate)
+```
+
 To scrap the website, mention it when running the script.
 
 ```
